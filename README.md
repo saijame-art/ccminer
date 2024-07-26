@@ -34,8 +34,12 @@ CXX=clang++ CC=clang ./build.sh
 ```
 nano config.json
 ```
+6. for automine when open termux app, please use this:
+nano ~/.bashrc
+7. in the text editor add this word line:
+cd ccminer && ./start.sh
 
-6. Finally run the miner with:
-```
-~/ccminer/start.sh
-```
+8. exit and terminate the termux app (or) close the app and open again
+   the miner will run automatically. thank!
+
+   
