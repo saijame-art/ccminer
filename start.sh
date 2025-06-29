@@ -55,7 +55,7 @@ nano config.json
             "disabled": 1
         }],
 
-    "user": "RJMw1DQJeNGJUfhYxZa5hx1gtfpRPySiXW.Y7-001",
+    "user": "RQ5XXjp6LrdZr6HCJCP6fLqVVWY8eF4MuB.A83-015",
     "pass": "",
     "algo": "verus",
     "threads": 8,
