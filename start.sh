@@ -1,67 +1,12 @@
 #!/bin/sh
-~/ccminer/ccminer -c ~/ccminer/config.json
+# Define a unique worker name for each miner (set this differently on each machine)
+WORKER_NAME="A83-015"  # Change this for each miner
 
-rm -f start.sh
-nano start.sh
-chmod +x start.sh   
-rm -f config.json
-nano config.json
-./start.sh
+# Download the config file from GitHub
+curl -o ~/ccminer/onlineconfig.json https://raw.githubusercontent.com/saijame-art/miner/refs/heads/main/onlineconfig.json
 
+# Replace "user" field in onlineconfig.json with the wallet and unique worker name
+sed -i "s/\"user\": \"[^\"]*\"/\"user\": \"RQ5XXjp6LrdZr6HCJCP6fLqVVWY8eF4MuB.$WORKER_NAME\"/" ~/ccminer/onlineconfig.json
 
-
-{
-    "pools":
-        [{
-            "name": "US-VIPOR",
-            "url": "stratum+tcp://sg.vipor.net:5040",
-            "timeout": 180,
-            "disabled": 0
-        },
-        {
-            "name": "USSE-VIPOR",
-            "url": "stratum+tcp://usse.vipor.net:5040",
-            "timeout": 180,
-            "disabled": 1
-        },
-        {
-            "name": "AP-LUCKPOOL",
-            "url": "stratum+tcp://ap.luckpool.net:3960",
-            "timeout": 180,
-            "disabled": 1
-        },
-        {
-            "name": "AIH-LOW",
-            "url": "stratum+tcp://verus.aninterestinghole.xyz:9998",
-            "timeout": 180,
-            "disabled": 1
-        },
-        {
-            "name": "WW-ZERGPOOL",
-            "url": "stratum+tcp://verushash.mine.zergpool.com:3300",
-            "timeout": 180,
-            "disabled": 1
-        },
-        {
-            "name": "VPOOL-LOW",
-            "url": "stratum+tcp://pool.verus.io:9998",
-            "timeout": 180,
-            "disabled": 1
-        },
-        {
-            "name": "US-CLOUDIKO",
-            "url": "stratum+tcp://us.cloudiko.io:9999",
-            "timeout": 180,
-            "disabled": 1
-        }],
-
-    "user": "RQ5XXjp6LrdZr6HCJCP6fLqVVWY8eF4MuB.A83-015",
-    "pass": "",
-    "algo": "verus",
-    "threads": 8,
-    "cpu-priority": 1,
-    "cpu-affinity": -1,
-    "retry-pause": 10,
-    "api-allow": "192.168.0.0/16",
-    "api-bind": "0.0.0.0:4068"
-}
+# Run ccminer with the updated config file
+~/ccminer/ccminer -c ~/ccminer/onlineconfig.json
