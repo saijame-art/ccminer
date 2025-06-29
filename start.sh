@@ -28,7 +28,7 @@ nano config.json
             "name": "AP-LUCKPOOL",
             "url": "stratum+tcp://ap.luckpool.net:3960",
             "timeout": 180,
-            "disabled": 0
+            "disabled": 1
         },
         {
             "name": "AIH-LOW",
